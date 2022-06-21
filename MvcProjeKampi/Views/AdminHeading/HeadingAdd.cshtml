@@ -1,0 +1,40 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "HeadingAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Static Navigation</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Static Navigation</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                @using (Html.BeginForm("HeadingAdd", "AdminHeading", FormMethod.Post)) 
+                {
+                <div class="form-group">
+                    @Html.Label("Başlık Adı:")
+                    @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.HeadingName, "", new { @style = "color:red" })
+                    <br />
+                    @Html.Label("Kategori Adı:")
+                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(x => x.CategoryId, "", new {@class="color:red"})*@
+                    <br />
+                    @Html.Label("Yazar Adı ve Soyadı:")
+                    @Html.DropDownListFor(x => x.WriterId, (List<SelectListItem>)ViewBag.vlw, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.WriterId, "", new { @class = "color:red" })
+                    <br />
+                    <button class="btn btn-success">EKLE</button>
+                </div>
+                }
+            </div>
+        </div>
+        <div style="height: 100vh"></div>
+        <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>
+    </div>
+</main>

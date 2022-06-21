@@ -1,0 +1,62 @@
+﻿@using EntityLayer.Concrete
+@model List<Heading>
+@{
+    ViewBag.Title = "WriterHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4"></h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Başlıklarım</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">      
+                <a href="/WriterPanel/WriterHeadingAdd/" class="btn btn-success">YENİ EKLE</a>     
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>BAŞLIK</th>
+                            <th>YAYINLANMA TARİHİ</th>
+                            <th>YAYINLANDIĞI KATEGORİ</th>                    
+                            <th>SİL</th>
+                            <th>GÜNCELLE</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>BAŞLIK</th>
+                            <th>YAYINLANMA TARİHİ</th>
+                            <th>YAYINLANDIĞI KATEGORİ</th>
+                            <th>SİL</th>
+                            <th>GÜNCELLE</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var y in Model)
+                        {
+                            <tr>
+                                <th>@y.HeadingId</th>
+                                <td>@y.HeadingName</td>
+                                <td>@(((DateTime)y.HeadingDate).ToString("dd-MMM-yyyy"))</td>
+                                <td>@y.Category.CategoryName</td>
+                                <td>
+                                    <a href="/WriterPanel/WriterHeadingBring/@y.HeadingId" class="btn btn-primary">GÜNCELLE</a>
+                                </td>
+                                <td>
+                                    <a href="/WriterPanel/WriterHeadingDelete/@y.HeadingId" class="btn btn-danger">SİL</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</main>

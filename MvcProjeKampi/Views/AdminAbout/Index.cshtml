@@ -1,0 +1,68 @@
+﻿@using EntityLayer.Concrete
+@model List<About> 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4"></h1>
+        <ol class="breadcrumb mb-4">
+            
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                About Listesi
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Metin1</th>
+                                <th>Metin2</th>
+                                <th>Resim1</th>
+                                <th>Resim2</th>
+                                
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Metin1</th>
+                                <th>Metin2</th>
+                                <th>Resim1</th>
+                                <th>Resim2</th>
+
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                            @foreach (var a in Model)
+                            {
+                                <tr>
+
+                                    <th>@a.AboutId</th>
+                                    <td>@a.AboutDetail1</td>
+                                    <td>@a.AboutDetail2</td>
+                                    <td>@a.AboutImage1</td>
+                                    <td>@a.AboutImage2</td>
+
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@Html.Action("AboutPartial","AdminAbout")

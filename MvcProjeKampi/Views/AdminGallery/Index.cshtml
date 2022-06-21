@@ -1,0 +1,78 @@
+﻿@using EntityLayer.Concrete
+@model List<Image>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4"></h1>
+        @*<ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Kategoriler</li>
+            </ol>*@
+        <div class="card mb-4">
+            @*<div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    Gallery
+                </div>*@
+            <div class="card-body">
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            Ekko Lightbox
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            @foreach (var i in Model)
+                                            {
+                                                <div class="col-sm-2">
+                                                    <a href="@i.ImagePath" data-toggle="lightbox" data-title="@i.ImageName" data-gallery="gallery">
+                                                        <img src="@i.ImagePath" class="img-fluid mb-2" alt="white sample"/>
+                                                    </a>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+<link rel="stylesheet" href="~/AdminTemplate2/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="~/AdminTemplate2/plugins/ekko-lightbox/ekko-lightbox.css">
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="~/AdminTemplate2/dist/css/adminlte.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<script src="~/AdminTemplate2/plugins/jquery/jquery.min.js"></script>
+<script src="~/AdminTemplate2/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/AdminTemplate2/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="~/AdminTemplate2/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+<script src="~/AdminTemplate2/dist/js/adminlte.min.js"></script>
+<script src="~/AdminTemplate2/dist/js/demo.js"></script>
+<script src="~/AdminTemplate2/plugins/filterizr/jquery.filterizr.min.js"></script>
+<script>
+    $(function () {
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox({
+                alwaysShowClose: true
+            });
+        });
+
+        $('.filter-container').filterizr({ gutterPixels: 3 });
+        $('.btn[data-filter]').on('click', function () {
+            $('.btn[data-filter]').removeClass('active');
+            $(this).addClass('active');
+        });
+    })</script>

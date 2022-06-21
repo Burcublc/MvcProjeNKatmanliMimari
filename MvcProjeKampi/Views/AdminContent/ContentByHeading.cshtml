@@ -1,0 +1,63 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewBag.Title = "ContentByHeading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4"></h1>
+        <div class="card mb-4">
+            <div class="card-body">
+
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="card">
+                                    <div class="card-header p-2">
+                                        <ul class="nav nav-pills">
+                                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab"></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content">
+                                            <div class="active tab-pane" id="timeline">
+                                                <div class="timeline timeline-inverse">
+                                                    @foreach (var c in Model)
+                                                    {
+                                                        <div>
+                                                            <i class="fas fa-comments bg-warning"></i>
+
+                                                            <div class="timeline-item">
+                                                                <span class="time"><i class="far fa-clock"></i> @(((DateTime)c.ContentDate).ToString("dd-MMM-yyyy"))</span>
+                                                                <h3 class="timeline-header"><a href="#">@c.Writer.WriterName @c.Writer.WriterSurname</a></h3>
+
+                                                                <div class="timeline-body">
+                                                                    @c.ContentValue
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+              
+            </div>
+        </div>
+    </div>
+</main>
+<link rel="stylesheet" href="~/AdminTemplate2/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="~/AdminTemplate2/dist/css/adminlte.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<script src="~/AdminTemplate2/plugins/jquery/jquery.min.js"></script>
+<script src="~/AdminTemplate2/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/AdminTemplate2/dist/js/adminlte.min.js"></script>
+<script src="~/AdminTemplate2/dist/js/demo.js"></script>

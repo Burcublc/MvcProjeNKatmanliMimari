@@ -1,0 +1,74 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4"></h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Kategoriler</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Kategoriler Listesi
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>KATEGORİ ADI</th>
+                                <th>AÇIKLAMA</th>   
+                                <th>BAŞLIKLAR</th>
+                                <th>SİL</th>
+                                <th>GÜNCELLE</th>
+                                
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>KATEGORİ ADI</th>
+                                <th>AÇIKLAMA</th>
+                                <th>BAŞLIKLAR</th>
+                                <th>SİL</th>
+                                <th>GÜNCELLE</th>
+                                
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                            @foreach (var k in Model)
+                            {
+                                <tr>
+
+                                    <th>@k.CategoryId</th>
+                                    <td>@k.CategoryName</td>
+                                    <td>@k.CategoryDescription</td>
+                              
+                                    <td>
+                                        <a href="#" class="btn btn-warning">BAŞLIKLAR</a> 
+                                    </td>
+                                    <td>
+                                        <a href="/AdminCategory/BringCategory/@k.CategoryId" class="btn btn-primary">GÜNCELLE</a>
+                                    </td>
+                                    <td>
+                                        <a href="/AdminCategory/CategoryDelete/@k.CategoryId" class="btn btn-danger">SİL</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/AdminCategory/CategoryAdd" class="btn btn-success">YENİ KATEGORİ EKLE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
